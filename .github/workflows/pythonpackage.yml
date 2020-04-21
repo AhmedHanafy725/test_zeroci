@@ -20,6 +20,8 @@ jobs:
         brew install upx
         brew install patchelf
         ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa -q -P ""
+        eval `ssh-agent`
+        ssh-add
         pip3 install pyinstaller
         pip3 install jedi
         pip3 install ptpython==2.0.4
