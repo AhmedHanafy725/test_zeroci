@@ -17,8 +17,6 @@ jobs:
     - name: Install dependencies
       run: |
         brew install docker
-        brew install python3
-        brew install python3-pip
         brew install upx
         brew install patchelf
         ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa -q -P ""
