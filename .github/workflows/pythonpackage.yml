@@ -19,9 +19,6 @@ jobs:
         brew install docker
         brew install upx
         brew install patchelf
-        ssh-keygen -t rsa -b 4096 -N "" -f ~/.ssh/id_rsa -q -P ""
-        eval `ssh-agent`
-        ssh-add
         pip3 install pyinstaller
         pip3 install jedi
         pip3 install ptpython==2.0.4
@@ -35,6 +32,8 @@ jobs:
         cd jumpscaleX_core/install
         ./package.sh
         cd dist
-        ./3sdk args secret val=test
+        ssh-keygen -t rsa -b 4096 -N "" -f ~/.ssh/id_rsa -q -P ""
+        eval `ssh-agent`
+        ssh-add
         ./3sdk container install identity=test.test secret=test
         
