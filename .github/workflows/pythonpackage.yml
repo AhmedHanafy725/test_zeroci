@@ -20,7 +20,7 @@ jobs:
         brew install upx
         brew install patchelf
         ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa -q -P ""
-        pip3 install pyinstaller --user
+        pip3 install pyinstaller
     - name: Lint with black
       run: |
         pip3 install black
