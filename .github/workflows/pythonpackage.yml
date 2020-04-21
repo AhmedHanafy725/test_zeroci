@@ -21,6 +21,7 @@ jobs:
         brew install patchelf
         ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa -q -P ""
         pip3 install pyinstaller
+        pip3 install jedi
     - name: Lint with black
       run: |
         pip3 install black
