@@ -33,13 +33,17 @@ jobs:
         sudo apt update
         apt-cache policy docker-ce
         sudo apt install docker-ce
+        sudo apt-get install upx
+        sudo apt install patchelf
+        sudo apt-get install git
     - name: Lint with black
       run: |
         pip install black
     - name: Test with pytest
       run: |
-        pip install pytest
-        wget https://github.com/threefoldtech/jumpscaleX_core/releases/download/v10.4-rc5/3sdk_10.4-rc5_linux_amd64
-        sudo chmod +x 3sdk_10.4-rc5_linux_amd64
-        ./3sdk_10.4-rc5_linux_amd64 container install
+        git clone https://github.com/threefoldtech/jumpscaleX_core --branch development
+        cd jumpscaleX_core/install
+        ./package.sh
+        cd dist
+        ./3sdk container install name=jsx
         
