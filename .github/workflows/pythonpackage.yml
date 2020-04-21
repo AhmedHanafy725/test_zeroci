@@ -39,5 +39,5 @@ jobs:
         cd jumpscaleX_core/install
         sudo ./package.sh
         cd dist
-        sudo ./3sdk container install name=jsx
+        sudo ./3sdk container install name=jsx testnr=jsx.test
         
