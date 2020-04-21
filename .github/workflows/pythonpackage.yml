@@ -37,7 +37,7 @@ jobs:
       run: |
         git clone https://github.com/threefoldtech/jumpscaleX_core --branch development
         cd jumpscaleX_core/install
-        ./package.sh
+        sudo ./package.sh
         cd dist
-        ./3sdk container install name=jsx
+        sudo ./3sdk container install name=jsx
         
