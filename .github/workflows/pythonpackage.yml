@@ -35,6 +35,7 @@ jobs:
         sudo apt-get install upx
         sudo apt install patchelf
         sudo apt-get install git
+        sudo apt-get install python3
         sudo apt-get install python3-pip
     - name: Lint with black
       run: |
