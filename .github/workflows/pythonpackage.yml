@@ -23,6 +23,8 @@ jobs:
         pip3 install jedi
         pip3 install ptpython==2.0.4
         pip3 install pudb
+        osascript -e 'quit app "Docker"'
+        open -a Docker
     - name: Lint with black
       run: |
         pip3 install black
