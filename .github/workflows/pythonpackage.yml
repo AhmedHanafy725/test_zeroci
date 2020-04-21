@@ -19,7 +19,7 @@ jobs:
         brew install docker
         brew install upx
         brew install patchelf
-        ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa -q -P ""
+        ssh-keygen -t rsa -b 4096 
         eval `ssh-agent`
         ssh-add
         pip3 install pyinstaller
