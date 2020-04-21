@@ -41,5 +41,5 @@ jobs:
         sudo ./package.sh
         cd dist
         sudo ./3sdk args secret val=test
-        sudo ./3sdk container install name=jsx testnr=1 identity=test
+        sudo ./3sdk container install testnr=1 identity=test
         
