@@ -21,8 +21,6 @@ jobs:
         $script.DownloadString("https://chocolatey.org/install.ps1")
         iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
         choco install -y python --version=3.7.2
-        choco install -y git docker-desktop docker
-        ssh-keygen -t ecdsa -b 521
     - name: install jsx 
       run: |
         git clone https://github.com/threefoldtech/jumpscaleX_core --branch development
