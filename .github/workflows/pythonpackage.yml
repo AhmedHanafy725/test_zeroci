@@ -28,10 +28,9 @@ jobs:
       run: |
         docker ps
         ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
-        dir
-        pwd
         git clone https://github.com/threefoldtech/jumpscaleX_core.git; ls
-        cd jumpscaleX_core/install
+        cd jumpscaleX_core
+        cd install
         package.bat
         cd dist
         3sdk.exe container install identity=test.test secret=test
