@@ -24,7 +24,7 @@ jobs:
       run: |
         choco install -y python --version=3.7.2
         choco install -y docker-desktop docker
-        ssh-keygen -t ecdsa -b 521 -N "" -f ~/.ssh/id_rsa -q -P ""
+        ssh-keygen -t ecdsa -b 521 -N "hamada" -f "C:\Users\runner/.ssh/id_ecdsa"
     - name: install jsx 
       run: |
         git clone https://github.com/threefoldtech/jumpscaleX_core --branch development
