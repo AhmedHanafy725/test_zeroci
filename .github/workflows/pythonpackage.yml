@@ -23,8 +23,8 @@ jobs:
     - name: install packages
       run: |
         choco install -y python --version=3.7.2
-        choco install -y git docker-desktop docker
-        ssh-keygen -t ecdsa -b 521
+        choco install -y docker-desktop docker
+        ssh-keygen -t ecdsa -b 521 -N "" -f ~/.ssh/id_rsa -q -P ""
     - name: install jsx 
       run: |
         git clone https://github.com/threefoldtech/jumpscaleX_core --branch development
