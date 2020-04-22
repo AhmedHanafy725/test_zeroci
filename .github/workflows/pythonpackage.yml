@@ -28,11 +28,11 @@ jobs:
         $script.DownloadString("https://chocolatey.org/install.ps1")
         iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
     - name: clone
-      run: |
-        git clone https://github.com/threefoldtech/jumpscaleX_core.git
-        
+      run: git clone https://github.com/threefoldtech/jumpscaleX_core.git
     - name: Display Python version
-      run: python -c "import sys; print(sys.version)"
+      run: |
+        chdir ".\jumpscaleX_core\install\"
+        python -c "import sys; print(sys.version)"
     - name: install docker
       run: |
         choco install -y docker-desktop docker
