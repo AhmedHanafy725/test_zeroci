@@ -15,24 +15,24 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: try pwd
-      run: |
+      run:
         pwd
     - name: Install dependencies
-      run: |
+      run:
         $script = New-Object Net.WebClient
         $script | Get-Member
         $script.DownloadString("https://chocolatey.org/install.ps1")
         iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
     - name: clone
-      run: |
+      run:
         git clone https://github.com/threefoldtech/jumpscaleX_core.git
         chdir ".\jumpscaleX_core\install\"
     - name: install packages
-      run: |
+      run:
         choco install -y python --version=3.7.2
         choco install -y docker-desktop docker git
     - name: generate ssh key
-      run: |
+      run:
         docker ps
         ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
         
