@@ -28,8 +28,9 @@ jobs:
       run: |
         docker ps
         ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
-        cd jsx
-        git clone https://github.com/threefoldtech/jumpscaleX_core.git
+        dir
+        pwd
+        git clone https://github.com/threefoldtech/jumpscaleX_core.git; ls
         cd jumpscaleX_core/install
         package.bat
         cd dist
