@@ -29,7 +29,7 @@ jobs:
         choco install -y docker-desktop docker
     - name: install jsx 
       run: |
-        git clone https://github.com/threefoldtech/jumpscaleX_core --branch development
+        git clone https://github.com/threefoldtech/jumpscaleX_core.git
         cd jumpscaleX_core/install
         package.bat
         cd dist
