@@ -20,10 +20,6 @@ jobs:
         $script | Get-Member
         $script.DownloadString("https://chocolatey.org/install.ps1")
         iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
-    - name: clone
-      run: |
-        choco install -y git
-        git clone https://github.com/threefoldtech/jumpscaleX_core.git
     - name: install packages
       run: |
         choco install -y python --version=3.7.2
