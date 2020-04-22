@@ -26,6 +26,7 @@ jobs:
         choco install -y docker-desktop docker git
     - name: install jsx 
       run: |
+        docker ps
         ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
         git clone https://github.com/threefoldtech/jumpscaleX_core.git
         cd jumpscaleX_core/install
