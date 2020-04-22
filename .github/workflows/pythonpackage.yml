@@ -36,10 +36,12 @@ jobs:
         docker ps
         ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
         
-    - name: install jsx
-      run: |
-        pwd;
+    - name: generate bin
+      run:
         chdir ".\jumpscaleX_core\install\";
-        pwd;
         package.bat
+    - name: install jsx
+      run:
         ./dist/3sdk.exe container install identity=test.test secret=test
+        
+        
