@@ -20,14 +20,13 @@ jobs:
         $script | Get-Member
         $script.DownloadString("https://chocolatey.org/install.ps1")
         iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
-        choco upgrade chocolatey
-        choco install -y python3 git docker-desktop 
+        choco install -y python3 git docker-desktop docker
         ssh-keygen -t ecdsa -b 521
     - name: install jsx 
       run: |
         git clone https://github.com/threefoldtech/jumpscaleX_core --branch development
         cd jumpscaleX_core/install
-        ./package.bat
+        package.bat
         cd dist
-        ./3sdk.exe container install identity=test.test secret=test
+        3sdk.exe container install identity=test.test secret=test
         
