@@ -37,8 +37,7 @@ jobs:
         ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
     - name: generate bin
       run: |
-        pwd
-        chdir ".\jumpscaleX_core\install\";
+        chdir ".\jumpscaleX_core\install\"
         package.bat
     - name: install jsx
       run: |
