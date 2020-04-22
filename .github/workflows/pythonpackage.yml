@@ -24,7 +24,6 @@ jobs:
       run: |
         choco install -y git
         git clone https://github.com/threefoldtech/jumpscaleX_core.git
-        chdir ".\jumpscaleX_core\install\"
     - name: install packages
       run: |
         choco install -y python --version=3.7.2
