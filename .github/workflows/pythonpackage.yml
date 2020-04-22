@@ -14,9 +14,6 @@ jobs:
 
     runs-on: windows-latest
     steps:
-    - name: generate ssh key
-      run: |
-        ssh-keygen -t ecdsa -b 521 -N "hamada" -f "$HOME/.ssh/id_ecdsa"
     - name: Install dependencies
       run: |
         $script = New-Object Net.WebClient
@@ -26,9 +23,10 @@ jobs:
     - name: install packages
       run: |
         choco install -y python --version=3.7.2
-        choco install -y docker-desktop docker
+        choco install -y docker-desktop docker git
     - name: install jsx 
       run: |
+        ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
         git clone https://github.com/threefoldtech/jumpscaleX_core.git
         cd jumpscaleX_core/install
         package.bat
