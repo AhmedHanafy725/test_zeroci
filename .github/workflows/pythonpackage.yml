@@ -24,12 +24,14 @@ jobs:
       run: |
         git clone https://github.com/threefoldtech/jumpscaleX_core.git
         chdir ".\jumpscaleX_core\install\"
+        pwd
     - name: install python
       run: |
         choco install -y python --version=3.7.7
     - name: generate bin
       run: |
         chdir ".\jumpscaleX_core\install\"
+        pwd
         package.bat
     - name: install docker
       run: |
