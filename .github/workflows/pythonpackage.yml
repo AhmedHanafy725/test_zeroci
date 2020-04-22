@@ -14,9 +14,6 @@ jobs:
 
     runs-on: windows-latest
     steps:
-    - name: try pwd
-      run:
-        pwd
     - name: Install dependencies
       run: |
         $script = New-Object Net.WebClient
@@ -27,18 +24,20 @@ jobs:
       run: |
         git clone https://github.com/threefoldtech/jumpscaleX_core.git
         chdir ".\jumpscaleX_core\install\"
-    - name: install packages
+    - name: install python
       run: |
         choco install -y python --version=3.7.2
-        choco install -y docker-desktop docker git
-    - name: generate ssh key
-      run: |
-        docker ps
-        ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
     - name: generate bin
       run: |
         chdir ".\jumpscaleX_core\install\"
         package.bat
+    - name: install docker
+      run: |
+        choco install -y docker-desktop docker
+        docker ps
+    - name: generate ssh key
+      run: |
+        ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
     - name: install jsx
       run: |
         ./dist/3sdk.exe container install identity=test.test secret=test
