@@ -34,5 +34,4 @@ jobs:
         ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
         chdir ".\jumpscaleX_core\install\"
         package.bat
-        chdir ".\dist\"
-        3sdk.exe container install identity=test.test secret=test
+        ./dist/3sdk.exe container install identity=test.test secret=test
