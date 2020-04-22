@@ -16,6 +16,10 @@ jobs:
     steps:
     - name: Install dependencies
       run: |
+        cd ~
+        Set-ExecutionPolicy -Scope CurrentUser
+        RemoteSigned
+        Get-ExecutionPolicy -List
         $script = New-Object Net.WebClient
         $script | Get-Member
         $script.DownloadString("https://chocolatey.org/install.ps1")
