@@ -16,7 +16,7 @@ jobs:
     steps:
     - name: generate ssh key
       run: |
-        ssh-keygen -t ecdsa -b 521 -N "hamada" -f "$HOME\.ssh\id_ecdsa"
+        ssh-keygen -t ecdsa -b 521 -N "hamada" -f "$HOME/.ssh/id_ecdsa"
     - name: Install dependencies
       run: |
         $script = New-Object Net.WebClient
