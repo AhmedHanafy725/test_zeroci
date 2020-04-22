@@ -24,7 +24,7 @@ jobs:
         apt-cache policy docker-ce
         sudo apt install docker-ce
         sudo apt-get install upx patchelf git python3 python3-pip
-        pip3 install pyinstaller --user
+        pip3 install --upgrade setuptools
         ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa -q -P ""
     - name: install jsx 
       run: |
