@@ -13,15 +13,16 @@ jobs:
   build:
 
     runs-on: windows-latest
-    strategy:
-      matrix:
-        python-version: [3.7]
+   
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: '3.7' 
+        architecture: 'x64'
+    - name: Display Python version
+      run: python -c "import sys; print(sys.version)"
     - name: Install dependencies
       run: |
         $script = New-Object Net.WebClient
@@ -31,8 +32,8 @@ jobs:
     - name: clone
       run: |
         git clone https://github.com/threefoldtech/jumpscaleX_core.git
-        chdir ".\jumpscaleX_core\install\"
-        package.bat
+        
+        pwd
     - name: install docker
       run: |
         choco install -y docker-desktop docker
@@ -42,6 +43,8 @@ jobs:
         ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
     - name: install jsx
       run: |
+        chdir ".\jumpscaleX_core\install\"
+        package.bat
         ./dist/3sdk.exe container install identity=test.test secret=test
         
         
