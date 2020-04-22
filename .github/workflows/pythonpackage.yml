@@ -31,4 +31,3 @@ jobs:
         package.bat
         cd dist
         3sdk.exe container install identity=test.test secret=test
-        
