@@ -16,17 +16,9 @@ jobs:
     steps:
     - name: Install dependencies
       run: |
-        brew cask install docker
-        brew install upx
-        brew install patchelf
-        pip3 install pyinstaller
-        pip3 install jedi
-        pip3 install ptpython==2.0.4
-        pip3 install pudb
+        brew install docker upx patchelf 
+        pip3 install pyinstaller pudb jedi ptpython==2.0.4
         open -a Docker
-    - name: Lint with black
-      run: |
-        pip3 install black
     - name: install jsx 
       run: |
         git clone https://github.com/threefoldtech/jumpscaleX_core --branch development
@@ -36,6 +28,5 @@ jobs:
         ssh-keygen -t rsa -b 4096 -N "" -f ~/.ssh/id_rsa -q -P ""
         eval `ssh-agent`
         ssh-add
-        killall Docker && open /Applications/Docker.app
         ./3sdk container install identity=test.test secret=test
         
