@@ -14,6 +14,9 @@ jobs:
 
     runs-on: windows-latest
     steps:
+    - name: try pwd
+      run: |
+        pwd
     - name: Install dependencies
       run: |
         $script = New-Object Net.WebClient
