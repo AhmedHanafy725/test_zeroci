@@ -26,7 +26,7 @@ jobs:
         chdir ".\jumpscaleX_core\install\"
     - name: install python
       run: |
-        choco install -y python --version=3.7.2
+        choco install -y python --version=3.7.7
     - name: generate bin
       run: |
         chdir ".\jumpscaleX_core\install\"
