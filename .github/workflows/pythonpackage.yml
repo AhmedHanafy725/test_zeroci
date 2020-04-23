@@ -13,12 +13,6 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.7
-      uses: actions/setup-python@v1
-      with:
-        python-version: '3.7.7' 
-        architecture: 'x64'
     - name: Install dependencies
       run: |
         $script = New-Object Net.WebClient
@@ -27,6 +21,8 @@ jobs:
         iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
     - name: clone
       run: git clone https://github.com/threefoldtech/jumpscaleX_core.git
+    - name: install python
+      run: choco install -y python --version=3.7.7
     - name: install docker
       run: |
         choco install -y docker-desktop docker
