@@ -13,6 +13,12 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.7	    
+      uses: actions/setup-python@v1	      
+      with:	      
+        python-version: '3.7' 	        
+        architecture: 'x64'	     
     - name: Install dependencies
       run: |
         $script = New-Object Net.WebClient
@@ -21,8 +27,10 @@ jobs:
         iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
     - name: clone
       run: git clone https://github.com/threefoldtech/jumpscaleX_core.git
-    - name: install python
-      run: choco install -y python --version=3.7.7
+    - name: generate binary
+      run: |
+        chdir ".\jumpscaleX_core\install\"
+        ./package.bat
     - name: install docker
       run: |
         choco install -y docker-desktop docker
@@ -33,13 +41,7 @@ jobs:
     - name: generate ssh key
       run: |
         ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
-    - name: filesystem
-      run: |
-        chdir ".\jumpscaleX_core\install\"
-        pwd
     - name: install jsx
       run: |
-        pip3 install pytinstaller
-        chdir ".\jumpscaleX_core\install\"
-        ./package.bat
-        ./dist/3sdk.exe container install identity=test.test secret=test
+        chdir ".\jumpscaleX_core\install\dist"
+        ./3sdk.exe container install identity=test.test secret=test
