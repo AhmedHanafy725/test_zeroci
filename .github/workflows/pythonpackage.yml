@@ -46,4 +46,3 @@ jobs:
         chdir ".\jumpscaleX_core\install\"
         ./package.bat
         ./dist/3sdk.exe container install identity=test.test secret=test
-        
