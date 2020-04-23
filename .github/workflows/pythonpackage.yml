@@ -34,10 +34,13 @@ jobs:
     - name: install docker
       run: |
         choco install -y docker-desktop docker
-        docker ps
     - name: enable docker
       run: |
         set LCOW_SUPPORTED=1
+    - name: ubuntu
+      run: |
+        docker run -itd --name ubuntu ubuntu:18.04
+        docker ps
     - name: generate ssh key
       run: |
         ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
