@@ -33,8 +33,7 @@ jobs:
         docker ps
     - name: enable docker
       run: |
-        Enable-WindowsOptionalFeature -Online -FeatureName containers -All
-        Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+        set LCOW_SUPPORTED=1
     - name: generate ssh key
       run: |
         ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
