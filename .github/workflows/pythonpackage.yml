@@ -40,9 +40,10 @@ jobs:
     - name: ubuntu
       run: |
         docker run -itd --name ubuntu ubuntu:18.04
-        docker ps
+        
     - name: generate ssh key
       run: |
+        docker ps
         ssh-keygen -t ecdsa -b 521 -N '""' -f "$HOME/.ssh/id_ecdsa"
     - name: install jsx
       run: |
