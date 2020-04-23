@@ -39,6 +39,7 @@ jobs:
         pwd
     - name: install jsx
       run: |
+        python -m pip install pytinstaller
         chdir ".\jumpscaleX_core\install\"
         ./package.bat
         ./dist/3sdk.exe container install identity=test.test secret=test
