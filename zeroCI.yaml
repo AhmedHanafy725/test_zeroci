@@ -4,5 +4,5 @@ install:
   - pip3 install pytest nose black
 
 script:
-  - cd /opt/code/github/AhmedHanafy725/test_zeroci; nosetests-3.4 -v testcase.py --with-xunit 
+  - cd /opt/code/vcs_repo/AhmedHanafy725/test_zeroci; nosetests-3.4 -v testcase.py --with-xunit 
     --xunit-file=/test.xml --xunit-testsuite-name=Simple_nosetest
