@@ -1,4 +1,4 @@
-prequisties:
+prerequisties:
   imageName: ubuntu:18.04
 
 install: |
