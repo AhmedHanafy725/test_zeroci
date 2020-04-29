@@ -1,8 +1,11 @@
-prequisties: ubuntu:18.04
+prequisties:
+  imageName: ubuntu:18.04
+
 install:
   - apt-get update; apt-get install -y python3.6 python3-pip
   - pip3 install pytest nose black
 
 script:
-  - cd /opt/code/vcs_repos/AhmedHanafy725/test_zeroci && nosetests-3.4 -v testcase.py --with-xunit 
+  - name: Smiple Tests
+    cmd: cd /opt/code/vcs_repos/AhmedHanafy725/test_zeroci && nosetests-3.4 -v testcase.py --with-xunit 
     --xunit-file=/test.xml --xunit-testsuite-name=Simple_nosetest
