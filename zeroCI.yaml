@@ -8,5 +8,6 @@ install:
 script:
   - name: Smiple Tests
     cmd: |
+      hamada
       cd /opt/code/vcs_repos/AhmedHanafy725/test_zeroci
       nosetests-3.4 -v testcase.py --with-xunit --xunit-file=/test.xml --xunit-testsuite-name=Simple_nosetest
