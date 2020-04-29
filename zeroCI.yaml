@@ -1,4 +1,5 @@
-prequisties: ahmedhanafy725/jsx
+prequisties:
+  imageName: ahmedhanafy725/jsx
 
 install:
   - apt-get update
