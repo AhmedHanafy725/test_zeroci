@@ -1,5 +1,5 @@
 prerequisites:
-  imageName: threefoldtech/3bot2
+  imageName: ahmedhanafy725/jsx
 
 install: |
   apt-get update
