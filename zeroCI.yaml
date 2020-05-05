@@ -14,7 +14,7 @@ install: |
   done
   source /sandbox/env.sh
   jsx generate
-  jsx secret secrettest
+  jsx secret $secret
 
 script:
   - name: Sal Tests
