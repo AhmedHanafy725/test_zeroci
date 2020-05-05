@@ -1,15 +1,15 @@
 prerequisites:
-  imageName: ahmedhanafy725/jsx
+  imageName: threefoldtech/3bot2
 
 install: |
   apt-get update
   pip3 install click pytest loguru parameterized requests checksumdir xmltodict imbox logbook nltk imapclient
   eval `ssh-agent -s`; ssh-add
+  mkdir -p /sandbox/code/github/threefoldtech/
   cd /sandbox/code/github/threefoldtech/
   declare strs=('core' 'libs' 'libs_extra' 'builders' 'threebot') 
   for s in ${strs[@]};
-  do cd /sandbox/code/github/threefoldtech/
-  rm -rf /sandbox/code/github/threefoldtech/jumpscaleX_$s
+  do
   git clone https://github.com/threefoldtech/jumpscaleX_$s.git --branch development
   done
   source /sandbox/env.sh
