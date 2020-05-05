@@ -22,7 +22,7 @@ script:
   - name: Black Formatting
     cmd: |
       cd /sandbox/code/github/threefoldtech/
-      black jmpscaleX_core -l 120 -t py37 --diff --exclude 'templates' 1>/dev/null
+      black jumpscaleX_core -l 120 -t py37 --diff --exclude 'templates' 1>/dev/null
   - name: Sal Tests
     cmd: | 
       source /sandbox/env.sh
