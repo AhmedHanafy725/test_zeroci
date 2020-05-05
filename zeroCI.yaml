@@ -4,6 +4,7 @@ prerequisites:
 install: |
   apt-get update
   pip3 install click pytest loguru parameterized requests checksumdir xmltodict imbox logbook nltk imapclient
+  pip3 install black==19.10b0
   eval `ssh-agent -s`; ssh-add
   mkdir -p /sandbox/code/github/threefoldtech/
   cd /sandbox/code/github/threefoldtech/
@@ -17,6 +18,10 @@ install: |
   jsx secret $secret
 
 script:
+  - name: Black Formatting
+    cmd: |
+      cd /sandbox/code/github/threefoldtech/
+      black jmpscaleX_core -l 120 -t py37 --diff --exclude 'templates' 1>/dev/null
   - name: Sal Tests
     cmd: | 
       source /sandbox/env.sh
