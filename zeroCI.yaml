@@ -16,7 +16,6 @@ install: |
   jsx generate
 
 script:
-
   - name: Sal Tests
     cmd: | 
       source /sandbox/env.sh
