@@ -34,3 +34,4 @@ jobs:
         cd dist
         sudo ./3sdk container install identity=test.test secret=test
         
+        
