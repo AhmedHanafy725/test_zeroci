@@ -14,3 +14,4 @@ script:
     cmd: |
       cd /opt/code/vcs_repos/AhmedHanafy725/test_zeroci
       pytest -v testcase.py --junitxml=/test.xml -o junit_suite_name=Simple_pytest
+
