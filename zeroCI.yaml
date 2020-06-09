@@ -6,11 +6,11 @@ install: |
   pip3 install pytest nose black
 
 script:
-  - name: Smiple Tests
+  - name: Smiple Tests With Nosetest
     cmd: |
       cd /opt/code/vcs_repos/AhmedHanafy725/test_zeroci
       nosetests-3.4 -v testcase.py --with-xunit --xunit-file=/test.xml --xunit-testsuite-name=Simple_nosetest
-  - name: Same smiple Tests
+  - name: Smiple Tests With Pytest
     cmd: |
       cd /opt/code/vcs_repos/AhmedHanafy725/test_zeroci
-      nosetests-3.4 -v testcase.py --with-xunit --xunit-file=/test.xml --xunit-testsuite-name=Simple_nosetest
+      pytest -v testcase.py --junitxml=/test.xml -o junit_suite_name=Simple_pytest
