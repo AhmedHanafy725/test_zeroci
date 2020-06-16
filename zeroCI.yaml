@@ -1,5 +1,6 @@
 prerequisites:
   image_name: ubuntu:18.04
+  shell_bin: /bin/sh
 
 install: |
   apt-get update; apt-get install -y python3.6 python3-pip
