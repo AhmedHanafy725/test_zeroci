@@ -4,7 +4,6 @@ prerequisites:
 install: |
   apt-get update; apt-get install -y python3.6 python3-pip
   pip3 install pytest nose black
-  sleep 300
 
 script:
   - name: Smiple Tests With Nosetest
