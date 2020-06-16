@@ -17,3 +17,4 @@ script:
       pytest -v testcase.py --junitxml=/test.xml -o junit_suite_name=Simple_pytest
 
 bin_path: /usr/local/bin/pytest
+
