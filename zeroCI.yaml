@@ -1,9 +1,31 @@
-prequisties:
+# For a repository named AhmedHanafy725/test_zeroci
+jobs:
+  - name: Generate Publishing Tool Bin
+    prerequisites:
+      image_name: crystallang/crystal:0.34.0-alpine
 
-install:
-  - apt-get update; apt-get install -y python3.6 python3-pip
-  - pip3 install pytest nose black
+    install: |
+      apk update
+      apk add libssh2-static libssh2 libssh2-dev
+      apk add git
+      cd /opt/code/vcs_repos/
+      git clone https://github.com/threefoldfoundation/publishingtools.git
 
-script:
-  - cd /opt/code/github/AhmedHanafy725/test; nosetests-3.4 -v testcase.py --with-xunit --xunit-file=/test.xml 
-    --xunit-testsuite-name=Simple_nosetest
+    script:
+      - name: Test Bin
+        cmd: |
+          /opt/code/vcs_repos/publishingtools/bin/tfweb -v
+
+    bin_path: /opt/code/vcs_repos/publishingtools/bin/tfweb
+
+  - name: Use Publishing Tool Bin
+    prerequisites:
+      image_name: ubuntu:18.04
+
+    install: |
+      apt-get update
+
+    script:
+      - name: Test Bin
+        cmd: |
+          /opt/bin/tfweb -v 
