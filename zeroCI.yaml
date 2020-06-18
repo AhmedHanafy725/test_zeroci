@@ -34,4 +34,4 @@ jobs:
       - name: Test nosetests Bin
         cmd: |
           cd /opt/code/vcs_repos/AhmedHanafy725/test_zeroci
-          nosetests -v testcase.py --with-xunit --xunit-file=/test.xml --xunit-testsuite-name=Simple_nosetest
+          /usr/local/bin/nosetests -v testcase.py --with-xunit --xunit-file=/test.xml --xunit-testsuite-name=Simple_nosetest
