@@ -2,7 +2,7 @@
 jobs:
   - name: Generate Publishing Tool Bin
     prerequisites:
-      image_name: crystallang/crystal:0.34.0-alpine
+      image_name: crystallang/crystal:0.35.1-alpine
 
     install: |
       apk update
