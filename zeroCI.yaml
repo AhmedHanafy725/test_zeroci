@@ -13,5 +13,5 @@ jobs:
     script:
       - name: Test neph
         type: neph
-        working_dir: 
-        yaml_path: /zeroci/code/vcs_repos/neph/sample/neph.yaml
+        working_dir: /zeroci/code/vcs_repos/neph
+        yaml_path: 
