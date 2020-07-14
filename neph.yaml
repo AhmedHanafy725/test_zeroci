@@ -2,6 +2,7 @@ main:
   commands:
     - sleep 0.8
     - echo "in main job"
+    - ls /hamada
   depends_on:
     - sub_job0
     - sub_job1
@@ -15,7 +16,3 @@ sub_job1:
   commands:
     - sleep 0.8
     - echo "In sub job 1"
-
-test_job:
-  commands:
-    - ls /hamada
