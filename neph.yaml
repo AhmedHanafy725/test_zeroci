@@ -1,18 +1,19 @@
 main:
   commands:
-    - sleep 0.8
-    - echo "in main job"
-    - ls /hamada
+    - cd /js-ng && poetry run pytest tests -s
   depends_on:
     - sub_job0
     - sub_job1
 
 sub_job0:
   commands:
-    - sleep 1
-    - echo "In sub job 0"
+    - apt-get update
+    - apt-get install git python3-pip python3-venv python3-setuptools tmux -y
+    - pip3 install poetry pytest
 
 sub_job1:
   commands:
-    - sleep 0.8
-    - echo "In sub job 1"
+    -cd / && git clone https://github.com/threefoldtech/js-ng.git
+    - cd /js-ng && poetry install
+  depends_on:
+    - sub_job0
