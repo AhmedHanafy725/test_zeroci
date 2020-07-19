@@ -13,7 +13,7 @@ sub_job0:
 
 sub_job1:
   commands:
-    -cd / && git clone https://github.com/threefoldtech/js-ng.git
+    - cd / && git clone https://github.com/threefoldtech/js-ng.git
     - cd /js-ng && poetry install
   depends_on:
     - sub_job0
