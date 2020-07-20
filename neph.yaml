@@ -7,12 +7,14 @@ main:
 
 sub_job0:
   commands:
+    - RED='\033[0;31m' && NC='\033[0m' && printf "Start ${RED}subjob0${NC} \n"
     - apt-get update
     - apt-get install git python3-pip python3-venv python3-setuptools tmux -y
     - pip3 install poetry pytest
 
 sub_job1:
   commands:
+    - RED='\033[0;31m' && NC='\033[0m' && printf "Start ${RED}subjob1${NC} \n"
     - cd / && git clone https://github.com/threefoldtech/js-ng.git
     - cd /js-ng && poetry install
   depends_on:
