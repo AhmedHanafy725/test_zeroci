@@ -32,3 +32,4 @@ jobs:
       - name: Test Bin
         cmd: |
           /opt/bin/tfweb -v 
+
