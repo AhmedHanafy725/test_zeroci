@@ -35,3 +35,4 @@ jobs:
         cmd: |
           cd /zeroci/code/vcs_repos/AhmedHanafy725/test_zeroci
           /zeroci/bin/nosetests -v testcase.py --with-xunit --xunit-file=/test.xml --xunit-testsuite-name=Simple_nosetest
+
