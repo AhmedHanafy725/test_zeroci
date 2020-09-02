@@ -11,15 +11,14 @@ jobs:
       cd /opt/code/vcs_repos/
       git clone https://github.com/threefoldfoundation/publishingtools.git
       cd publishingtools
-      sleep 1000
       shards build --static --link-flags "$(pkg-config libxml-2.0 --libs --static)" --link-flags "$(pkg-config libssh2 --libs --static)"
 
     script:
       - name: Test Bin
         cmd: |
-          /opt/code/vcs_repos/publishingtools/bin/tfweb -v
+          /zeroci/code/vcs_repos/publishingtools/bin/tfweb -v
 
-    bin_path: /opt/code/vcs_repos/publishingtools/bin/tfweb
+    bin_path: /zeroci/code/vcs_repos/publishingtools/bin/tfweb
 
   - name: Use Publishing Tool Bin
     prerequisites:
