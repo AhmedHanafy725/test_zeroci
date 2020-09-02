@@ -11,7 +11,7 @@ jobs:
       cd /zeroci/code/vcs_repos/
       git clone https://github.com/threefoldfoundation/publishingtools.git
       cd publishingtools
-      shards build --static --link-flags "$(pkg-config libxml-2.0 --libs --static)" --link-flags "$(pkg-config libssh2 --libs --static)"
+      shards build --static
 
     script:
       - name: Test Bin
