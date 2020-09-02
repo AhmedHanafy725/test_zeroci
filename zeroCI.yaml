@@ -8,7 +8,7 @@ jobs:
       apk update
       apk add libssh2-static libssh2 libssh2-dev
       apk add git
-      cd /opt/code/vcs_repos/
+      cd /zeroci/code/vcs_repos/
       git clone https://github.com/threefoldfoundation/publishingtools.git
       cd publishingtools
       shards build --static --link-flags "$(pkg-config libxml-2.0 --libs --static)" --link-flags "$(pkg-config libssh2 --libs --static)"
