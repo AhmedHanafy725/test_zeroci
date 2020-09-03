@@ -6,7 +6,7 @@ jobs:
 
     install: |
       apt-get update
-      apt-get install -y git tmux 
+      apt-get install -y git tmux build-essential
       cd /zeroci/code/
       git clone https://github.com/threefoldtech/0-db.git
       cd 0-db
