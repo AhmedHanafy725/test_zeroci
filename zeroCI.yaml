@@ -12,7 +12,7 @@ jobs:
       cd 0-db
       make
       tmux new -d -s zdb "/zeroci/code/0-db/bin/zdb --mode seq"
-      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      curl https://sh.rustup.rs -sSf | sh -s -- -y
       cd /zeroci/code
       git clone https://github.com/threefoldtech/bcdb.git
       cd bcdb 
