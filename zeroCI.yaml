@@ -1,35 +1,23 @@
 # For a repository named AhmedHanafy725/test_zeroci
 jobs:
-  - name: Generate Publishing Tool Bin
+  - name: building bcdb
     prerequisites:
-      image_name: crystallang/crystal:0.35.1-alpine
-
-    install: |
-      apk update
-      apk add libssh2-static libssh2 libssh2-dev
-      apk add git
-      cd /zeroci/code/vcs_repos/
-      git clone https://github.com/threefoldfoundation/publishingtools.git
-      cd publishingtools
-      shards build --static
-
-    script:
-      - name: Test Bin
-        cmd: |
-          /zeroci/code/vcs_repos/publishingtools/bin/tfweb -v
-
-    bin_path: /zeroci/code/vcs_repos/publishingtools/bin/tfweb
-
-  - name: Use Publishing Tool Bin
-    prerequisites:
-      image_name: ubuntu:18.04
+      image_name: ubuntu:20.04
 
     install: |
       apt-get update
-
+      apt-get install -y git tmux 
+      cd /zeroci/code/
+      git clone https://github.com/threefoldtech/0-db.git
+      cd 0-db
+      make
+      tmux new -d -s zdb "/zeroci/code/0-db/bin/zdb --mode seq"
+      cd /zeroci/code
+      git clone https://github.com/threefoldtech/bcdb.git
+      cd bcdb 
+      make 
     script:
-      - name: Test Bin
+      - name: Test BCDB Bin
         cmd: |
-          /opt/bin/tfweb -v 
-
-
+          bcdb --help
+ 
