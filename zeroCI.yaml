@@ -6,7 +6,7 @@ jobs:
 
     install: |
       apt-get update
-      apt-get install -y git tmux build-essential curl
+      apt-get install -y git tmux build-essential curl musl-tools
       curl https://sh.rustup.rs -sSf | sh -s -- -y
       cd /zeroci/code/
       git clone https://github.com/threefoldtech/0-db.git
