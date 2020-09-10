@@ -1,6 +1,6 @@
 # For a repository named AhmedHanafy725/test_zeroci
 jobs:
-  - name: building bcdb
+  - name: Building BCDB
     prerequisites:
       image_name: ubuntu:20.04
 
