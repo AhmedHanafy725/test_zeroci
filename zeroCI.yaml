@@ -21,5 +21,5 @@ jobs:
     script:
       - name: Test BCDB Bin
         cmd: |
-          bcdb --help
+          /zeroci/code/bcdb/target/x86_64-unknown-linux-musl/release/bcdb --help
  
