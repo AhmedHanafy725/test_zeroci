@@ -18,6 +18,7 @@ jobs:
       git clone https://github.com/threefoldtech/bcdb.git
       cd bcdb 
       make
+
     script:
       - name: Test BCDB Bin
         cmd: |
