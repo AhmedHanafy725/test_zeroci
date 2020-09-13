@@ -40,7 +40,7 @@ jobs:
           tfuser id import --tid $tid1 --mnemonic "$words1" > /dev/null 2>&1
           tmux new-session -d -s instance1
           tmux new-window -d -t instance1 -n zdb "zdb --mode seq --port 9900 --data /root/test_bcdb/instance1 --index /root/test_bcdb/instance1"
-          tmux new-window -d -t instance1 -n bcdb "bcdb --seed-file user.seed --rest /root/test_bcdb/instance1/bcdb.sock --zdb 9900 --grpc 0.0.0.0:50051"
+          tmux new-window -d -t instance1 -n bcdb "bcdb --seed-file user.seed --rest /root/test_bcdb/instance1/bcdb.sock --zdb 9900 --grpc 0.0.0.0:50051 --meta ~/.bcdb-meta1"
       - name: Start BCDB instance 2
         cmd: |
           mkdir -p /root/test_bcdb/instance2
@@ -48,6 +48,6 @@ jobs:
           tfuser id import --tid $tid2 --mnemonic "$words2" > /dev/null 2>&1
           tmux new-session -d -s instance2
           tmux new-window -d -t instance2 -n zdb "zdb --mode seq --port 9901 --data /root/test_bcdb/instance2 --index /root/test_bcdb/instance2"
-          tmux new-window -d -t instance2 -n bcdb "bcdb --seed-file user.seed --rest /root/test_bcdb/instance2/bcdb.sock --zdb 9901 --grpc 0.0.0.0:50052"
+          tmux new-window -d -t instance2 -n bcdb "bcdb --seed-file user.seed --rest /root/test_bcdb/instance2/bcdb.sock --zdb 9901 --grpc 0.0.0.0:50052 --meta ~/.bcdb-meta2"
 
     bin_path: /zeroci/code/bcdb/target/x86_64-unknown-linux-musl/release/bcdb
