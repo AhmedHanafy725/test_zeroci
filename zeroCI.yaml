@@ -33,28 +33,21 @@ jobs:
       wget https://github.com/crystaluniverse/bcdb-client/releases/download/v0.1/tfuser -P /usr/local/bin/
       chmod +x /usr/local/bin/tfuser
     script:
-      - name: Check ZDB Bin
-        cmd: |
-          zdb --help
-      - name: Check BCDB Bin
-        cmd: |
-          bcdb --help
       - name: Start BCDB instance 1
         cmd: |
           mkdir -p /root/test_bcdb/instance1
           cd /root/test_bcdb/instance1
-          tfuser id import --tid $tid1 --mnemonic "$words1" &> /dev/null 
+          tfuser id import --tid $tid1 --mnemonic "$words1" > /dev/null 2>&1
           tmux new-session -d -s instance1
-          tmux new-window -d -t instance1 -n zdb "zdb --mode seq --data /root/test_bcdb/instance1 --index /root/test_bcdb/instance1"
-          tmux new-window -d -t instance1 -n bcdb "bcdb --seed-file user.seed --rest /root/test_bcdb/instance2/bcdb.sock"
+          tmux new-window -d -t instance1 -n zdb "zdb --mode seq --port 9900 --data /root/test_bcdb/instance1 --index /root/test_bcdb/instance1"
+          tmux new-window -d -t instance1 -n bcdb "bcdb --seed-file user.seed --rest /root/test_bcdb/instance1/bcdb.sock --zdb 9900 --grpc 0.0.0.0:50051"
       - name: Start BCDB instance 2
         cmd: |
           mkdir -p /root/test_bcdb/instance2
           cd /root/test_bcdb/instance2
-          tfuser id import --tid $tid2 --mnemonic "$words2" &> /dev/null 
+          tfuser id import --tid $tid2 --mnemonic "$words2" > /dev/null 2>&1
           tmux new-session -d -s instance2
-          tmux new-window -d -t instance2 -n zdb "zdb --mode seq --data /root/test_bcdb/instance2 --index /root/test_bcdb/instance2"
-          tmux new-window -d -t instance2 -n bcdb "bcdb --seed-file user.seed --rest /root/test_bcdb/instance2/bcdb.sock"
-          sleep 300
+          tmux new-window -d -t instance2 -n zdb "zdb --mode seq --port 9901 --data /root/test_bcdb/instance2 --index /root/test_bcdb/instance2"
+          tmux new-window -d -t instance2 -n bcdb "bcdb --seed-file user.seed --rest /root/test_bcdb/instance2/bcdb.sock --zdb 9901 --grpc 0.0.0.0:50052"
 
     bin_path: /zeroci/code/bcdb/target/x86_64-unknown-linux-musl/release/bcdb
