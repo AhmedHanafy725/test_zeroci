@@ -6,7 +6,7 @@ jobs:
 
     install: |
       apk update
-      apk add libssh2-static libssh2 libssh2-dev sudo git
+      apk add libssh2-static libssh2 libssh2-dev sudo git redis-server
       apk add openrc --no-cache
       cd /zeroci/code/vcs_repos/
       git clone https://github.com/threefoldfoundation/publishingtools.git
