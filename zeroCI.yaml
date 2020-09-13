@@ -43,16 +43,18 @@ jobs:
         cmd: |
           mkdir -p /root/test_bcdb/instance1
           cd /root/test_bcdb/instance1
-          tfuser id import --tid $tid1 --mnemonic "$words1"
-          tmux new -d -s zdb1 "zdb --mode seq --data /root/test_bcdb/instance1 --index /root/test_bcdb/instance1"
-          tmux new -d -s bcdb1 "bcdb --seed-file user.seed --rest /root/test_bcdb/instance2/bcdb.sock"
+          tfuser id import --tid $tid1 --mnemonic "$words1" &> /dev/null 
+          tmux new-session -d -s instance1
+          tmux new-window -d -t instance1 -n zdb "zdb --mode seq --data /root/test_bcdb/instance1 --index /root/test_bcdb/instance1"
+          tmux new-window -d -t instance1 -n bcdb "bcdb --seed-file user.seed --rest /root/test_bcdb/instance2/bcdb.sock"
       - name: Start BCDB instance 2
         cmd: |
           mkdir -p /root/test_bcdb/instance2
           cd /root/test_bcdb/instance2
-          tfuser id import --tid $tid2 --mnemonic "$words2"
-          tmux new -d -s zdb2 "zdb --mode seq --data /root/test_bcdb/instance2 --index /root/test_bcdb/instance2"
-          tmux new -d -s bcdb2 "bcdb --seed-file user.seed --rest /root/test_bcdb/instance2/bcdb.sock"
+          tfuser id import --tid $tid2 --mnemonic "$words2" &> /dev/null 
+          tmux new-session -d -s instance2
+          tmux new-window -d -t instance2 -n zdb "zdb --mode seq --data /root/test_bcdb/instance2 --index /root/test_bcdb/instance2"
+          tmux new-window -d -t instance2 -n bcdb "bcdb --seed-file user.seed --rest /root/test_bcdb/instance2/bcdb.sock"
           sleep 300
 
     bin_path: /zeroci/code/bcdb/target/x86_64-unknown-linux-musl/release/bcdb
