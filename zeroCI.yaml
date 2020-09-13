@@ -6,8 +6,8 @@ jobs:
 
     install: |
       apk update
-      apk add libssh2-static libssh2 libssh2-dev sudo
-      apk add git
+      apk add libssh2-static libssh2 libssh2-dev sudo git
+      apk add openrc --no-cache
       cd /zeroci/code/vcs_repos/
       git clone https://github.com/threefoldfoundation/publishingtools.git
       cd publishingtools
@@ -31,5 +31,3 @@ jobs:
       - name: Test Bin
         cmd: |
           /zeroci/bin/tfweb -v 
-
-
