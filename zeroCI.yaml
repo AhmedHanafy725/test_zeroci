@@ -6,21 +6,53 @@ jobs:
       image_name: ubuntu:20.04
 
     install: |
+      # Install dependencies
       apt-get update
       apt-get install -y git tmux build-essential curl musl musl-tools
-      curl https://sh.rustup.rs -sSf | sh -s -- -y
-      cp ~/.cargo/bin/* /usr/local/bin/
+      
+      # Install ZDB
       cd /zeroci/code/
       git clone https://github.com/threefoldtech/0-db.git
       cd 0-db
       make
-      tmux new -d -s zdb "/zeroci/code/0-db/bin/zdb --mode seq"
+      cp /zeroci/code/0-db/bin/zdb /usr/local/bin/
+      
+      # Install rust
+      curl https://sh.rustup.rs -sSf | sh -s -- -y
+      cp ~/.cargo/bin/* /usr/local/bin/
+      
+      
+      # Install BCDB
       cd /zeroci/code
       git clone https://github.com/threefoldtech/bcdb.git
       cd bcdb 
       make
-
+      cp /zeroci/code/bcdb/target/x86_64-unknown-linux-musl/release/bcdb /usr/local/bin/
+      
+      # Get tfuser
+      wget https://github.com/crystaluniverse/bcdb-client/releases/download/v0.1/tfuser -P /usr/local/bin/
+      chmod +x /usr/local/bin/tfuser
     script:
-      - name: Test BCDB Bin
+      - name: Check ZDB Bin
         cmd: |
-          /zeroci/code/bcdb/target/x86_64-unknown-linux-musl/release/bcdb --help
+          zdb --help
+      - name: Check BCDB Bin
+        cmd: |
+          bcdb --help
+      - name: Start BCDB instance 1
+        cmd: |
+          mkdir -p /root/test_bcdb/instance1
+          cd /root/test_bcdb/instance1
+          tfuser id import --tid $tid1 --mnemonic "$words1"
+          tmux new -d -s zdb1 "zdb --mode seq --data /root/test_bcdb/instance1 --index /root/test_bcdb/instance1"
+          tmux new -d -s bcdb1 "bcdb --seed-file user.seed"
+      - name: Start BCDB instance 2
+        cmd: |
+          mkdir -p /root/test_bcdb/instance2
+          cd /root/test_bcdb/instance2
+          tfuser id import --tid $tid2 --mnemonic "$words2"
+          tmux new -d -s zdb1 "zdb --mode seq --data /root/test_bcdb/instance2 --index /root/test_bcdb/instance2"
+          tmux new -d -s bcdb1 "bcdb --seed-file user.seed"
+          sleep 300
+
+    bin_path: /zeroci/code/bcdb/target/x86_64-unknown-linux-musl/release/bcdb
