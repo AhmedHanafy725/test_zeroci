@@ -30,6 +30,6 @@ jobs:
     script:
       - name: Test Bin
         cmd: |
-          /opt/bin/tfweb -v 
+          /zeroci/bin/tfweb -v 
 
 
