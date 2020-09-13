@@ -6,7 +6,7 @@ jobs:
 
     install: |
       apk update
-      apk add libssh2-static libssh2 libssh2-dev
+      apk add libssh2-static libssh2 libssh2-dev sudo
       apk add git
       cd /zeroci/code/vcs_repos/
       git clone https://github.com/threefoldfoundation/publishingtools.git
