@@ -8,7 +8,7 @@ jobs:
     install: |
       # Install dependencies
       apt-get update
-      apt-get install -y git tmux build-essential curl musl musl-tools
+      apt-get install -y git tmux build-essential curl wget musl musl-tools
       
       # Install ZDB
       cd /zeroci/code/
