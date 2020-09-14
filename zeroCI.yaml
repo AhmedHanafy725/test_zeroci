@@ -51,5 +51,5 @@ jobs:
           tmux new-session -d -s instance2
           tmux new-window -d -t instance2 -n zdb "zdb --mode seq --port 9901 --data /root/test_bcdb/instance2 --index /root/test_bcdb/instance2"
           tmux new-window -d -t instance2 -n bcdb "bcdb --peers-file /root/test_bcdb/peers.json --seed-file user.seed --rest /root/test_bcdb/instance2/bcdb.sock --zdb 9901 --grpc 0.0.0.0:50052 --meta ~/.bcdb-meta2"
-          sleep 600
-    bin_path: /zeroci/code/bcdb/target/x86_64-unknown-linux-musl/release/bcdb
+
+bin_path: /zeroci/code/bcdb/target/x86_64-unknown-linux-musl/release/bcdb
