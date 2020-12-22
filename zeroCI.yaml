@@ -1,4 +1,6 @@
 # For a repository named AhmedHanafy725/test_zeroci
+run_on:
+
 jobs:
   - name: Generate Bin
     prerequisites:
